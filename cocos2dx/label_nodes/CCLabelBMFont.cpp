@@ -1133,7 +1133,14 @@ void CCLabelBMFont::updateLabel()
                         if (index < 0) continue;
 
                         CCSprite* characterSprite = (CCSprite*)getChildByTag(index);
-                        characterSprite->setPosition(ccpAdd(characterSprite->getPosition(), ccp(shift, 0.0f)));
+                        if (characterSprite != NULL)
+                        {
+                            characterSprite->setPosition(ccpAdd(characterSprite->getPosition(), ccp(shift, 0.0f)));
+                        }
+                        else
+                        {
+                            CCLog("Error: CCLabelBMFont child character sprite is null.");
+                        }
                     }
                 }
 
