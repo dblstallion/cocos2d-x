@@ -45,11 +45,9 @@ THE SOFTWARE.
 #define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING_OES
 #define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0_OES
 #define CC_GL_FRAMEBUFFER_COMPLETE	GL_FRAMEBUFFER_COMPLETE_OES
-#define GL_WRITE_ONLY               GL_WRITE_ONLY_OES
 
 #include "CCCommon.h"
 #include <IwGL.h>
-#define GL_DEPTH24_STENCIL8		GL_DEPTH24_STENCIL8_OES	// MH: Added, cany seem to find it anywhere, is this the correct one?
 #define GL_BGRA                 GL_BGRA_EXT
 
 #endif // __CCGL_H__				// Mh: Added
