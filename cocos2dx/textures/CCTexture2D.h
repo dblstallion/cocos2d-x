@@ -261,6 +261,8 @@ private:
     CC_PROPERTY(GLfloat, m_fMaxS, MaxS)
     /** texture max T */
     CC_PROPERTY(GLfloat, m_fMaxT, MaxT)
+
+    CC_PROPERTY(GLfloat, m_fScaleFactor, ScaleFactor)
     /** content size */
     CC_PROPERTY_READONLY(CCSize, m_tContentSize, ContentSize)
 

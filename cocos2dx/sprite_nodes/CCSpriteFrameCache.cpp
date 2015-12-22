@@ -231,7 +231,7 @@ bool CCSpriteFrameCache::isFileLoaded(const char *pszPlist)
     return m_pLoadedFileNames->find(pszPlist) != m_pLoadedFileNames->end();
 }
 
-void CCSpriteFrameCache::addSpriteFramesWithFile(const char *pszPlist)
+void CCSpriteFrameCache::addSpriteFramesWithFile(const char *pszPlist, float scaleFactor)
 {
     CCAssert(pszPlist, "plist filename should not be NULL");
 
@@ -273,6 +273,8 @@ void CCSpriteFrameCache::addSpriteFramesWithFile(const char *pszPlist)
 
         if (pTexture)
         {
+            pTexture->setScaleFactor(scaleFactor);
+
             addSpriteFramesWithDictionary(dict, pTexture);
             m_pLoadedFileNames->insert(pszPlist);
         }

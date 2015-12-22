@@ -70,6 +70,7 @@ CCTexture2D::CCTexture2D()
 , m_bHasPremultipliedAlpha(false)
 , m_bHasMipmaps(false)
 , m_pShaderProgram(NULL)
+, m_fScaleFactor(1.0f)
 {
 }
 
@@ -112,8 +113,8 @@ CCSize CCTexture2D::getContentSize()
 {
 
     CCSize ret;
-    ret.width = m_tContentSize.width / CC_CONTENT_SCALE_FACTOR();
-    ret.height = m_tContentSize.height / CC_CONTENT_SCALE_FACTOR();
+    ret.width = m_tContentSize.width / CC_CONTENT_SCALE_FACTOR() * m_fScaleFactor;
+    ret.height = m_tContentSize.height / CC_CONTENT_SCALE_FACTOR() * m_fScaleFactor;
     
     return ret;
 }
@@ -141,6 +142,16 @@ GLfloat CCTexture2D::getMaxT()
 void CCTexture2D::setMaxT(GLfloat maxT)
 {
     m_fMaxT = maxT;
+}
+
+GLfloat CCTexture2D::getScaleFactor()
+{
+    return m_fScaleFactor;
+}
+
+void CCTexture2D::setScaleFactor(GLfloat scale)
+{
+    m_fScaleFactor = scale;
 }
 
 CCGLProgram* CCTexture2D::getShaderProgram(void)

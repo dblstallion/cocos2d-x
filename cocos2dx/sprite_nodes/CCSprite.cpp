@@ -365,13 +365,15 @@ void CCSprite::setVertexRect(const CCRect& rect)
 
 void CCSprite::setTextureCoords(CCRect rect)
 {
-    rect = CC_RECT_POINTS_TO_PIXELS(rect);
-
     CCTexture2D *tex = m_pobBatchNode ? m_pobTextureAtlas->getTexture() : m_pobTexture;
     if (! tex)
     {
         return;
     }
+
+    rect = CC_RECT_POINTS_TO_PIXELS(rect);
+    rect.origin = rect.origin / tex->getScaleFactor();
+    rect.size = rect.size / tex->getScaleFactor();
 
     float atlasWidth = (float)tex->getPixelsWide();
     float atlasHeight = (float)tex->getPixelsHigh();

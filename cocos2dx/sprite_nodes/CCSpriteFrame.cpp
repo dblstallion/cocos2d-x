@@ -90,10 +90,14 @@ bool CCSpriteFrame::initWithTexture(CCTexture2D* pobTexture, const CCRect& rect,
 
     m_obRectInPixels = rect;
     m_obRect = CC_RECT_PIXELS_TO_POINTS(rect);
+    m_obRect.size = m_obRect.size * pobTexture->getScaleFactor();
+    m_obRect.origin = m_obRect.origin * pobTexture->getScaleFactor();
     m_obOffsetInPixels = offset;
     m_obOffset = CC_POINT_PIXELS_TO_POINTS( m_obOffsetInPixels );
+    m_obOffset = m_obOffset * pobTexture->getScaleFactor();
     m_obOriginalSizeInPixels = originalSize;
     m_obOriginalSize = CC_SIZE_PIXELS_TO_POINTS( m_obOriginalSizeInPixels );
+    m_obOriginalSize = m_obOriginalSize * pobTexture->getScaleFactor();
     m_bRotated = rotated;
 
     return true;
