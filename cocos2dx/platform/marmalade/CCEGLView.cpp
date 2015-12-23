@@ -49,7 +49,14 @@ CCEGLView::CCEGLView()
 	
 	IwGLInit();
 
-	setFrameSize((float)IwGLGetInt(IW_GL_WIDTH), (float)IwGLGetInt(IW_GL_HEIGHT));
+    // This takes us fullscreen on windows
+    IwGLSwapBuffers();
+
+    int width, height;
+    eglQuerySurface(IwGLGetEGLDisplay(), IwGLGetEGLSurface(), EGL_WIDTH, &width);
+    eglQuerySurface(IwGLGetEGLDisplay(), IwGLGetEGLSurface(), EGL_HEIGHT, &height);
+
+    setFrameSize((float)width, (float)height);
 
     // Determine if the device supports multi-touch
     m_isMultiTouch = s3ePointerGetInt(S3E_POINTER_MULTI_TOUCH_AVAILABLE) ? true : false;
